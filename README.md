@@ -5,6 +5,7 @@ Personal portfolio focused on healthcare data analysis, health informatics, and 
 ## Current foundation
 
 - Responsive portfolio landing page with project links, services, experience, education, skills, and contact details.
+- Three dedicated project case-study pages with problem, approach, findings, recommendations, impact, clinical relevance, tools, and lessons learned.
 - Light/dark theme toggle, initially following the device preference and remembering manual changes.
 - Mobile navigation, project category filters, reduced-motion support, and toast notifications.
 - Privacy Policy and Terms of Use.
