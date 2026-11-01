@@ -80,3 +80,58 @@ body.note-lightbox-open{overflow:hidden}
   .note-card .note-image-button img{max-height:145px}
   .note-card .note-story{font-size:.88rem;line-height:1.8}
 }
+
+
+/* Final layout correction: keep the complete memory inside one card,
+   with a genuinely small thumbnail beside the story on every screen. */
+.note-card{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  margin-top:26px;
+  padding:clamp(14px,2.2vw,26px);
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.note-card .note-story-layout{
+  display:grid;
+  grid-template-columns:72px minmax(0,1fr);
+  gap:clamp(14px,2vw,24px);
+  align-items:start;
+  margin:0;
+}
+.note-card .note-image-button{
+  width:72px;
+  max-width:72px;
+  margin:4px 0 0;
+  border-radius:4px;
+}
+.note-card .note-image-button img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:100px;
+  aspect-ratio:auto;
+  object-fit:contain;
+}
+.note-card .note-image-button span{
+  padding:6px 3px;
+  font-size:.48rem;
+  line-height:1.35;
+  letter-spacing:.02em;
+  text-align:center;
+}
+.note-card .note-story{min-width:0;font-size:.9rem;line-height:1.8}
+.note-card .note-story p{overflow-wrap:anywhere}
+@media(max-width:760px){
+  .note-card{margin-top:20px;padding:13px}
+  .note-card .note-story-layout{grid-template-columns:58px minmax(0,1fr);gap:12px}
+  .note-card .note-image-button{width:58px;max-width:58px;margin-top:3px}
+  .note-card .note-image-button img{max-height:82px}
+  .note-card .note-image-button span{font-size:.43rem;padding:5px 2px}
+  .note-card .note-story{font-size:.84rem;line-height:1.75}
+  .note-card .note-story blockquote{padding:10px 12px;margin:12px 0;font-size:1.08rem}
+  .note-card .note-story .note-attribution{font-size:.68rem;line-height:1.6}
+}
