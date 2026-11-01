@@ -52,7 +52,7 @@ export default {
       if (body.token !== env.OWNER_BYPASS_TOKEN) return json({ error: "Unauthorized" }, 401, headers);
       return json({ ok: true, message: "This browser is excluded from analytics." }, 200, {
         ...headers,
-        "Set-Cookie": OWNER_COOKIE + "=1; Max-Age=31536000; Path=/; Secure; HttpOnly; SameSite=Lax"
+        "Set-Cookie": OWNER_COOKIE + "=1; Max-Age=31536000; Path=/; Secure; HttpOnly; SameSite=None"
       });
     }
 
@@ -83,7 +83,7 @@ export default {
 
       const responseHeaders = { ...headers };
       if (isNewVisitor) responseHeaders["Set-Cookie"] =
-        COOKIE_NAME + "=" + visitorId + "; Max-Age=31536000; Path=/; Secure; HttpOnly; SameSite=Lax";
+        COOKIE_NAME + "=" + visitorId + "; Max-Age=31536000; Path=/; Secure; HttpOnly; SameSite=None";
       return json({ ok: true, recorded }, 200, responseHeaders);
     }
 
