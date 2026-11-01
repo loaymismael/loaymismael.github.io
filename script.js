@@ -5,6 +5,8 @@
   const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   function applyTheme(theme) {
     root.dataset.theme = theme;
+    const portrait = document.getElementById("profilePortrait");
+    if (portrait) portrait.src = theme === "dark" ? "images/profile-dark.png" : "images/profile-light.png";
     if (themeToggle) {
       themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
       themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
