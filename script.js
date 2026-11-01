@@ -63,7 +63,7 @@
     document.querySelectorAll('.filter-chip').forEach(b => b.classList.toggle('active', b === button));
     const filter = button.dataset.filter;
     document.querySelectorAll('.project-card').forEach(card => {
-      const categories = card.dataset.categories.split(' ');
+      const categories = card.dataset.categories.split('|').map(category => category.trim());
       card.hidden = filter !== 'All' && !categories.includes(filter);
     });
   }));
