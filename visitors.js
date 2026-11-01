@@ -25,6 +25,10 @@
     })
     .then(data => {
       if (totalNode) totalNode.textContent = Number(data.totalVisits || 0).toLocaleString();
+      const countryCount = document.querySelector("[data-country-count]");
+      const recentCount = document.querySelector("[data-recent-count]");
+      if (countryCount) countryCount.textContent = (data.countries || []).length.toLocaleString();
+      if (recentCount) recentCount.textContent = (data.recentVisits || []).length.toLocaleString();
       if (countriesNode) {
         countriesNode.replaceChildren();
         (data.countries || []).forEach(item => {
