@@ -42,3 +42,13 @@ html[data-theme="dark"]{color-scheme:dark;--bg:#141715;--surface:#1c211e;--surfa
 body.note-lightbox-open{overflow:hidden}
 @media(max-width:760px){.note-section{grid-template-columns:1fr}.note-story-layout{grid-template-columns:1fr;gap:24px}.note-image-button{max-width:320px;margin:0 auto}.note-image-button img{max-height:420px}.note-lightbox{padding:16px}.note-lightbox img{max-width:96vw;max-height:82vh}}
 @media(prefers-reduced-motion:reduce){.note-image-button img{transition:none}}
+
+/* Reduce the note thumbnail substantially while keeping the full-size lightbox. */
+.note-story-layout{grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:30px}
+.note-image-button{width:100%;max-width:180px}
+.note-image-button img{max-height:210px;aspect-ratio:auto}
+@media(max-width:760px){
+  .note-story-layout{grid-template-columns:1fr;gap:20px}
+  .note-image-button{max-width:145px;margin:0 auto}
+  .note-image-button img{max-height:170px}
+}
