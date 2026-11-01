@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loaymismael.github.io/sitemap.xml
