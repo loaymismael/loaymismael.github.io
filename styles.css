@@ -9,5 +9,5 @@ html[data-theme="dark"]{color-scheme:dark;--bg:#141715;--surface:#1c211e;--surfa
 
 /* Uploaded image presentation */
 .portrait-image{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 35%;border-radius:46% 46% 8px 8px;background:var(--surface-2)}
-.project-art{padding:0;isolation:isolate}.project-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}.project-art:hover>img{transform:scale(1.035)}.project-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38),transparent 36%,transparent 65%,rgba(0,0,0,.28));pointer-events:none}.project-art .art-label,.project-art .art-number{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.project-art{padding:0;isolation:isolate}.project-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}.project-art:hover>img{transform:scale(1.035)}.project-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.38),transparent 36%,transparent 65%,rgba(0,0,0,.28));pointer-events:none}.project-art .art-label,.project-art .art-number{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5);z-index:2}
 @media(prefers-reduced-motion:reduce){.project-art>img{transition:none}}
