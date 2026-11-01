@@ -135,3 +135,15 @@ body.note-lightbox-open{overflow:hidden}
   .note-card .note-story blockquote{padding:10px 12px;margin:12px 0;font-size:1.08rem}
   .note-card .note-story .note-attribution{font-size:.68rem;line-height:1.6}
 }
+
+
+/* Keep the same framed memorial card on mobile and desktop. */
+@media(max-width:760px){
+  .note-card{
+    border:1px solid var(--line)!important;
+    border-radius:10px!important;
+    background:var(--surface)!important;
+    box-shadow:var(--shadow)!important;
+    padding:13px!important;
+  }
+}
