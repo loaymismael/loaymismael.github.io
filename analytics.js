@@ -4,7 +4,7 @@
  * Tracking stays disabled while the placeholder remains unchanged.
  */
 (() => {
-  const ANALYTICS_API = "https://YOUR-WORKER.workers.dev";
+  const ANALYTICS_API = "https://loay-portfolio-analytics-api.loaymohamed165.workers.dev";
   if (ANALYTICS_API.includes("YOUR-WORKER")) return;
 
   fetch(ANALYTICS_API + "/track", {
