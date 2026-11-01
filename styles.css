@@ -19,3 +19,26 @@ html[data-theme="dark"]{color-scheme:dark;--bg:#141715;--surface:#1c211e;--surfa
 /* News & Updates */
 .news-scroll{max-height:560px;overflow-y:auto;overscroll-behavior:contain;padding:2px 12px 12px 2px;scrollbar-width:thin;scrollbar-color:var(--muted) transparent}.news-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.news-card{position:relative;padding:25px;border:1px solid var(--line);border-radius:5px;background:var(--surface);min-height:210px;display:flex;flex-direction:column}.news-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 14px;margin-bottom:24px;font-size:.61rem;letter-spacing:.09em;color:var(--muted)}.news-meta span{display:inline-block;padding:5px 8px;border:1px solid var(--line);border-radius:3px;line-height:1.3}.news-card h3{font:700 1.12rem/1.35 Manrope,sans-serif;letter-spacing:-.035em;margin:0 0 10px}.news-card p{font-size:.84rem;line-height:1.75;color:var(--muted);margin:0}.news-status{align-self:flex-start;margin-top:auto;padding-top:18px;font-size:.62rem;letter-spacing:.1em;font-weight:700;color:var(--accent)}
 @media(max-width:640px){.news-scroll{max-height:500px}.news-grid{grid-template-columns:1fr}.news-card{min-height:0}.news-meta{margin-bottom:18px}}
+
+
+/* A Note to Remember */
+.note-section{grid-template-columns:.25fr 1fr;align-items:start}
+.note-content{min-width:0}
+.note-story-layout{display:grid;grid-template-columns:minmax(190px,.72fr) minmax(0,1.28fr);gap:38px;align-items:start;margin-top:32px}
+.note-image-button{display:block;position:relative;width:100%;padding:0;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--surface);cursor:zoom-in;text-align:left;box-shadow:var(--shadow)}
+.note-image-button img{display:block;width:100%;max-height:390px;aspect-ratio:3/4;object-fit:contain;background:var(--surface-2);transition:transform .3s ease}
+.note-image-button:hover img{transform:scale(1.025)}
+.note-image-button span{display:block;padding:12px 14px;font-size:.63rem;letter-spacing:.1em;font-weight:700;color:var(--muted);border-top:1px solid var(--line)}
+.note-story{font-size:.91rem;line-height:1.85;color:var(--muted)}
+.note-story p{margin:0 0 16px}
+.note-story blockquote{margin:18px 0;padding:15px 20px;border-left:3px solid var(--accent);background:var(--surface-2);font:600 clamp(1.2rem,2vw,1.55rem)/1.5 Manrope,sans-serif;color:var(--text);letter-spacing:-.035em}
+.note-story strong{color:var(--text)}
+.note-story .note-closing{margin-top:22px;font-style:italic;color:var(--text)}
+.note-story .note-attribution{margin-top:24px;color:var(--text)}
+.note-lightbox[hidden]{display:none!important}
+.note-lightbox{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:32px;background:rgba(12,16,13,.88);backdrop-filter:blur(5px)}
+.note-lightbox img{display:block;max-width:min(92vw,900px);max-height:88vh;width:auto;height:auto;object-fit:contain;background:#fff;border-radius:3px;box-shadow:0 20px 70px rgba(0,0,0,.35)}
+.note-lightbox-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(0,0,0,.25);color:#fff;font-size:2rem;line-height:1;cursor:pointer}
+body.note-lightbox-open{overflow:hidden}
+@media(max-width:760px){.note-section{grid-template-columns:1fr}.note-story-layout{grid-template-columns:1fr;gap:24px}.note-image-button{max-width:320px;margin:0 auto}.note-image-button img{max-height:420px}.note-lightbox{padding:16px}.note-lightbox img{max-width:96vw;max-height:82vh}}
+@media(prefers-reduced-motion:reduce){.note-image-button img{transition:none}}
