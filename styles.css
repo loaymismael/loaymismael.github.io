@@ -13,4 +13,4 @@ html[data-theme="dark"]{color-scheme:dark;--bg:#141715;--surface:#1c211e;--surfa
 @media(prefers-reduced-motion:reduce){.project-art>img{transition:none}}
 
 /* Keep the clinical positioning statement in the hero copy, not over the portrait. */
-.hero-copy .floating-note{position:relative;left:auto;bottom:auto;width:max-content;max-width:100%;margin-top:18px;}
+.hero-copy .floating-note{position:relative;left:auto;bottom:auto;width:max-content;max-width:100%;margin-top:22px;}
