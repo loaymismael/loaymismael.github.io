@@ -5,7 +5,7 @@ compatibility_date = "2026-11-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "loay-portfolio-analytics"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "73dae5fc-8d92-4d94-aacf-1e55cd88eb14"
 
 [vars]
 ALLOWED_ORIGIN = "https://loaymismael.github.io"
