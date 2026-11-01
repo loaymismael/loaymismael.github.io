@@ -7,6 +7,7 @@
 <link rel="canonical" href="https://loaymismael.github.io/visitors.html">
 <title>Visitors | Loay M. Ismael</title>
 <link rel="icon" href="assets/favicon.png" type="image/png"><link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body class="visitors-page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -31,7 +32,7 @@
 </section>
 <section class="section-wrap visitor-map-section">
 <div class="visitor-section-heading"><div><p class="eyebrow">GLOBAL REACH</p><h2>Visitor <span>map.</span></h2></div><span class="visitor-live-label"><i></i> <span data-analytics-status>Analytics setup pending</span></span></div>
-<div class="visitor-map-panel"><div class="visitor-map-art" aria-hidden="true"><span class="map-dot dot-one"></span><span class="map-dot dot-two"></span><span class="map-dot dot-three"></span><span class="map-dot dot-four"></span><span class="map-dot dot-five"></span></div><div class="visitor-map-message"><span class="map-globe">◎</span><h3>Your global audience, at a glance.</h3><p>The interactive map will appear here once privacy-conscious visitor analytics are connected.</p></div><span class="map-caption">APPROXIMATE LOCATIONS · NO PRECISE TRACKING</span></div>
+<div class="visitor-map-panel"><div id="visitorMap" role="region" aria-label="Interactive map showing approximate visitor locations"></div><span class="map-caption">APPROXIMATE LOCATIONS · NO PRECISE TRACKING</span></div>
 </section>
 <section class="section-wrap visitor-details-grid">
 <article class="visitor-data-card"><div class="visitor-section-heading"><div><p class="eyebrow">WHERE THEY COME FROM</p><h2>Country <span>statistics.</span></h2></div></div><ul class="visitor-list" data-country-list><li>Country statistics will appear when analytics are active.</li></ul></article>
@@ -41,6 +42,7 @@
 </main>
 <footer class="site-footer"><div class="footer-top"><a class="wordmark" href="index.html">LM<span>.</span></a><p>Built with passion for Healthcare, Data & AI.</p><div class="footer-socials"><a href="https://github.com/loaymismael" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/loaymismael/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://orcid.org/0009-0000-9387-5831" target="_blank" rel="noreferrer">ORCID ↗</a><a href="mailto:loaymohamed165@gmail.com">Email ↗</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> Loay M. Ismael. All Rights Reserved.</span><div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="index.html">Back to portfolio</a></div></div></footer>
 <script src="script.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="analytics.js"></script>
 <script src="visitors.js"></script>
 </body></html>
