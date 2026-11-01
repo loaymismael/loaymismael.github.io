@@ -1,0 +1,11 @@
+name = "loay-portfolio-analytics"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "loay-portfolio-analytics"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+ALLOWED_ORIGIN = "https://loaymismael.github.io"
