@@ -52,3 +52,31 @@ body.note-lightbox-open{overflow:hidden}
   .note-image-button{max-width:145px;margin:0 auto}
   .note-image-button img{max-height:170px}
 }
+
+
+/* Memorial note card: consistent framing and responsive image sizing. */
+.note-card{
+  margin-top:28px;
+  padding:clamp(16px,2.4vw,28px);
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.note-card .note-story-layout{
+  margin-top:0;
+  grid-template-columns:minmax(0,125px) minmax(0,1fr);
+  gap:clamp(20px,3vw,34px);
+  align-items:start;
+}
+.note-card .note-image-button{max-width:125px;margin:0}
+.note-card .note-image-button img{width:100%;max-height:165px;aspect-ratio:auto;object-fit:contain}
+.note-card .note-image-button span{padding:9px 7px;text-align:center;font-size:.55rem;letter-spacing:.06em}
+.note-card .note-story{min-width:0}
+@media(max-width:760px){
+  .note-card{padding:16px;margin-top:22px}
+  .note-card .note-story-layout{grid-template-columns:1fr;gap:18px}
+  .note-card .note-image-button{max-width:112px;margin:0 auto}
+  .note-card .note-image-button img{max-height:145px}
+  .note-card .note-story{font-size:.88rem;line-height:1.8}
+}
