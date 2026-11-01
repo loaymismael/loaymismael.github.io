@@ -3,7 +3,7 @@
  * Until configured, the page remains in setup-pending state.
  */
 (() => {
-  const ANALYTICS_API = "https://YOUR-WORKER.workers.dev";
+  const ANALYTICS_API = "https://loay-portfolio-analytics-api.loaymohamed165.workers.dev";
   const status = document.querySelector("[data-analytics-status]");
   if (!status) return;
 
