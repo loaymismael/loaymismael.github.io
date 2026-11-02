@@ -7,8 +7,18 @@
   const totalNode = document.querySelector("[data-total-visits]");
   const countryCount = document.querySelector("[data-country-count]");
   const countriesNode = document.querySelector("[data-country-list]");
+  const countryNames = typeof Intl.DisplayNames === "function"
+    ? new Intl.DisplayNames(["en"], { type: "region" })
+    : null;
 
-  const safeText = value => value == null || value === "" ? "Unknown" : String(value);
+  const countryLabel = code => {
+    if (typeof code !== "string" || !/^[A-Z]{2}$/.test(code)) return "Unknown";
+    try {
+      return countryNames ? countryNames.of(code) || code : code;
+    } catch {
+      return code;
+    }
+  };
 
   fetch(ANALYTICS_API + "/stats", { mode: "cors" })
     .then(response => {
@@ -31,7 +41,7 @@
 
         countries.forEach(item => {
           const row = document.createElement("li");
-          row.textContent = safeText(item.country) + " — " +
+          row.textContent = countryLabel(item.country) + " — " +
             Number(item.visits || 0).toLocaleString();
           countriesNode.appendChild(row);
         });
