@@ -1,82 +1,47 @@
 # Portfolio Visitor Analytics (Cloudflare)
 
-This folder contains the optional analytics backend for the portfolio.
+This folder documents the currently deployed analytics backend for the portfolio.
 
-## Privacy choices
+## Architecture and privacy
 
-- Raw IP addresses are never written to D1 or returned by the API.
-- Country and city come from Cloudflare request metadata.
-- Coordinates are rounded to one decimal place before storage for approximate map placement.
-- A random first-party visitor token is stored in a Secure, HttpOnly cookie. It is not derived from an IP address.
-- Repeat page loads from the same browser are grouped into one visit within a 30-minute window.
-- The public API returns aggregate country counts and a limited recent-visit list; it never returns visitor tokens.
-- Owner exclusion is a separate HttpOnly cookie set only after a valid secret is submitted to the Worker.
+- The website creates a random 128-bit visitor ID and stores it in first-party localStorage under the key `loay_visitor_id`.
+- The ID is not derived from an IP address. It normally remains stable in the same browser until site storage is cleared or a private session ends.
+- The Worker stores one row per visitor ID in the `visitors` table. Its primary key prevents the same ID from being counted as a second unique visitor.
+- The `visits` table records at most one visit per visitor ID in a rolling 30-minute window.
+- Country and city are read from Cloudflare request metadata. Coordinates, when available, are rounded to one decimal place before storage.
+- Raw IP addresses and visitor IDs are not returned by the public statistics endpoint.
+- The public `GET /stats` endpoint returns total visit count, unique visitor count, and aggregate country counts only.
+- Owner exclusion is performed in the owner's browser by setting `localStorage.setItem("loay_analytics_excluded", "1")`. This is a local browser preference, not an account-wide exclusion.
 
-## 1. Create the D1 database
+## D1 database
 
-In Cloudflare Dashboard, open **Workers & Pages → D1 SQL Database**, create a database named
-`loay-portfolio-analytics`, then run the contents of `schema.sql` in its SQL console.
-Copy its database ID into `wrangler.toml`.
+The database is named `loay-portfolio-analytics`. The Worker expects a D1 binding named `DB`.
 
-## 2. Create and deploy the Worker
+Run `schema.sql` when creating a fresh database. It creates both `visits` and `visitors` tables. The live database has already been populated from historical visit records. Do not drop or recreate either live table.
 
-Create a Worker named `loay-portfolio-analytics`. Deploy `worker.js` as its entry point,
-and configure the D1 binding exactly as follows:
+## Worker configuration
 
-- Variable name: `DB`
-- D1 database: `loay-portfolio-analytics`
+The deployed Worker is named `loay-portfolio-analytics-api`.
 
-Set the Worker variable `ALLOWED_ORIGIN` to:
-`https://loaymismael.github.io`
+Required binding: `DB` → `loay-portfolio-analytics`.
 
-Create a Worker secret named `OWNER_BYPASS_TOKEN` with a long random value.
-Do not put this secret in GitHub, HTML, JavaScript, or a public message.
+Worker variable: `ALLOWED_ORIGIN` = `https://loaymismael.github.io`.
 
-The Worker routes are:
-- `POST /track` — records a visit if the browser has not been counted in the last 30 minutes.
-- `GET /stats` — returns totals, country counts, and recent visits.
-- `POST /owner/ignore` — sets the owner-exclusion cookie when given the secret.
+Runtime configuration belongs in Cloudflare and must not be committed as secrets to this public repository.
 
-## 3. Connect the website
+## Routes
 
-After deploying, copy the Worker URL (for example, `https://loay-portfolio-analytics.<account>.workers.dev`).
-Replace the placeholder `ANALYTICS_API` in both `analytics.js` and `visitors.js` with that URL.
+- `POST /track`: validates the browser visitor ID, registers it once in `visitors`, and records a visit subject to the 30-minute window.
+- `GET /stats`: returns aggregate totals and country counts.
+- `POST /owner/ignore`: retained as a compatibility route; normal owner exclusion is handled by the website's local-storage setting.
 
-Add this script before the closing `</body>` tag on every page you want counted:
-`<script src="analytics.js"></script>`
+## Website integration
 
-On `visitors.html`, add:
-`<script src="visitors.js"></script>`
+`analytics.js` sends the visitor ID and current page path to the Worker. Include it on each public page intended to be counted. `visitors.js` reads `/stats` and displays total visits, unique visitors, and country aggregates on `visitors.html`.
 
-The Visitors page needs elements with these attributes for live values:
-- `data-analytics-status`
-- `data-total-visits`
-- `data-country-list`
-- `data-recent-visits`
+## Important limitations
 
-Until the API URL is configured and deployment is tested, the website tracker remains disabled.
-
-## 4. Exclude your own browser
-
-From a private local script or browser console on your own site, send:
-```js
-fetch("https://YOUR-WORKER.workers.dev/owner/ignore", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  credentials: "include",
-  body: JSON.stringify({ token: "YOUR_OWNER_BYPASS_TOKEN" })
-});
-```
-
-Do not share the token. Repeat this on each browser/device you use. The exclusion cookie lasts one year.
-
-## 5. Verify before announcing launch
-
-1. Open the site in a normal browser and confirm one visit appears.
-2. Reload several times within 30 minutes; the visit count should not increase.
-3. Use a second browser/device and confirm it is counted separately.
-4. Set the owner exclusion cookie and confirm that browser no longer records visits.
-5. Check that no IP address or visitor token appears in D1 query results or the public API.
-6. Test the site on mobile and desktop.
-
-Do not describe analytics as active until these checks pass.
+- Cleared browser storage, a different browser, or a new private session can generate a new visitor ID. The same human may therefore be counted as a new unique browser visitor.
+- This is browser-based unique counting, not verified person-level identity.
+- A specific analytics retention period has not been configured or promised.
+- Test changes against a separate development database before applying them to the live database.
