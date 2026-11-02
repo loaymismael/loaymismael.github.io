@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://loaymismael.github.io/</loc>
-  </url>
-  <url>
-    <loc>https://loaymismael.github.io/projects/hospital-emergency-room-dashboard.html</loc>
-  </url>
-  <url>
-    <loc>https://loaymismael.github.io/projects/medical-appointment-no-shows.html</loc>
-  </url>
-  <url>
-    <loc>https://loaymismael.github.io/projects/hospital-readmission-analytics.html</loc>
-  </url>
+  <url><loc>https://loaymismael.github.io/</loc></url>
+  <url><loc>https://loaymismael.github.io/projects/hospital-emergency-room-dashboard.html</loc></url>
+  <url><loc>https://loaymismael.github.io/projects/medical-appointment-no-shows.html</loc></url>
+  <url><loc>https://loaymismael.github.io/projects/hospital-readmission-analytics.html</loc></url>
+  <url><loc>https://loaymismael.github.io/visitors.html</loc></url>
+  <url><loc>https://loaymismael.github.io/privacy.html</loc></url>
+  <url><loc>https://loaymismael.github.io/terms.html</loc></url>
 </urlset>
