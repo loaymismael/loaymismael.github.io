@@ -10,13 +10,23 @@
   const countryNames = typeof Intl.DisplayNames === "function"
     ? new Intl.DisplayNames(["en"], { type: "region" })
     : null;
+  const commonCountryNames = {
+    EG: "Egypt",
+    US: "United States",
+    SA: "Saudi Arabia",
+    GB: "United Kingdom",
+    AE: "United Arab Emirates"
+  };
 
   const countryLabel = code => {
-    if (typeof code !== "string" || !/^[A-Z]{2}$/.test(code)) return "Unknown";
+    if (typeof code !== "string") return "Unknown";
+    const normalizedCode = code.trim().toUpperCase();
+    if (!/^[A-Z]{2}$/.test(normalizedCode)) return code;
+    if (commonCountryNames[normalizedCode]) return commonCountryNames[normalizedCode];
     try {
-      return countryNames ? countryNames.of(code) || code : code;
+      return countryNames ? countryNames.of(normalizedCode) || normalizedCode : normalizedCode;
     } catch {
-      return code;
+      return normalizedCode;
     }
   };
 
