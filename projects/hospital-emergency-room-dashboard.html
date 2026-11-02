@@ -52,4 +52,4 @@
 <script>
 document.getElementById('copyLink').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);showToast('Link copied to clipboard.')}catch{showToast('Copy is unavailable in this browser.')}});
 document.getElementById('shareLinkedIn').addEventListener('click',()=>window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href),'_blank','noopener,noreferrer'));
-</script></body></html>
+</script><script src="../analytics.js"></script></body></html>
