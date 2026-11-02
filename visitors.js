@@ -5,6 +5,7 @@
 (() => {
   const ANALYTICS_API = "https://loay-portfolio-analytics-api.loaymohamed165.workers.dev";
   const totalNode = document.querySelector("[data-total-visits]");
+  const uniqueNode = document.querySelector("[data-unique-visitors]");
   const countryCount = document.querySelector("[data-country-count]");
   const countriesNode = document.querySelector("[data-country-list]");
   const countryNames = typeof Intl.DisplayNames === "function"
@@ -42,6 +43,10 @@
         totalNode.textContent = Number(data.totalVisits || 0).toLocaleString();
       }
 
+      if (uniqueNode) {
+        uniqueNode.textContent = Number(data.uniqueVisitors || 0).toLocaleString();
+      }
+
       if (countryCount) {
         countryCount.textContent = countries.length.toLocaleString();
       }
@@ -66,6 +71,7 @@
     .catch(error => {
       console.error("Visitor analytics error:", error);
       if (totalNode) totalNode.textContent = "—";
+      if (uniqueNode) uniqueNode.textContent = "—";
       if (countryCount) countryCount.textContent = "—";
       if (countriesNode) {
         countriesNode.replaceChildren();
