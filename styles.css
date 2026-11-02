@@ -185,6 +185,9 @@ body.note-lightbox-open{overflow:hidden}
 .visitor-privacy-note{font-size:.72rem;line-height:1.6;color:var(--muted);margin:16px 0 0}
 .visitor-footnote{padding-top:26px}
 .visitor-footnote p{border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:.72rem;line-height:1.7}
+@media(min-width:761px){
+ .visitor-stat:nth-child(3) strong{font-size:clamp(1.35rem,2vw,1.8rem);letter-spacing:-.045em;overflow-wrap:anywhere;}
+}
 @media(max-width:680px){
  .visitors-hero{padding-top:52px}
  .visitors-title-row{align-items:start;flex-direction:column}
