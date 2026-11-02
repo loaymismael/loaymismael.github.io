@@ -214,3 +214,14 @@ body.note-lightbox-open{overflow:hidden}
   .visitor-stat:nth-child(3){min-width:0;}
   .visitor-stat:nth-child(3) strong{font-size:clamp(.9rem,3.5vw,1.25rem);letter-spacing:-.045em;overflow-wrap:anywhere;}
 }
+
+/* Final mobile typography adjustment for the Aggregate stat. */
+@media(max-width:680px){
+  .visitor-stat:nth-child(3) strong{
+    font-size:.78rem;
+    line-height:1.15;
+    letter-spacing:-.035em;
+    white-space:nowrap;
+    overflow-wrap:normal;
+  }
+}
