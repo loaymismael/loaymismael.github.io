@@ -50,5 +50,31 @@
 </div>
 </main>
 <footer class="site-footer"><div class="footer-top"><a class="wordmark" href="index.html">LM<span>.</span></a><p>Built with passion for Healthcare, Data & AI.</p><div class="footer-socials"><a href="https://github.com/loaymismael" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/loaymismael/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://orcid.org/0009-0000-9387-5831" target="_blank" rel="noreferrer">ORCID ↗</a><a href="mailto:loaymohamed165@gmail.com">Email ↗</a></div></div><div class="footer-bottom"><span>© <span id="year"></span> Loay M. Ismael. All Rights Reserved.</span><div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="index.html">Back to portfolio</a></div></div></footer>
-<script src="script.js"></script><script src="analytics.js"></script>
+<script src="script.js"></script>
+<script src="analytics.js"></script>
+<script>
+(() => {
+  const lightbox = document.getElementById("teacherNoteLightbox");
+  const openButton = document.getElementById("openTeacherNote");
+  const closeButton = document.getElementById("closeTeacherNote");
+  if (!lightbox || !openButton || !closeButton) return;
+  const close = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove("note-lightbox-open");
+    openButton.focus();
+  };
+  openButton.addEventListener("click", () => {
+    lightbox.hidden = false;
+    document.body.classList.add("note-lightbox-open");
+    closeButton.focus();
+  });
+  closeButton.addEventListener("click", close);
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) close();
+  });
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !lightbox.hidden) close();
+  });
+})();
+</script>
 </body></html>
